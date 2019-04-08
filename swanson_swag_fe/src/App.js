@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {getQuote} from './Services/quotes.services';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      quote: []
+    }
+  }
+
+  componentDidMount(){
+    getQuote()
+      .then( res => {
+        this.setState({quote: res.data})
+        console.log(res.data)
+        ;
+      })
+  }
+
   render() {
+    const quote = this.state.quote;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        Ron Swanson Quote Generator
+        {quote}
         </header>
       </div>
     );
