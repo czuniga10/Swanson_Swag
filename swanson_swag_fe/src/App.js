@@ -9,14 +9,28 @@ class App extends Component {
       quote: []
     }
   }
+  
 
+
+  
+  //trying to use a callback function to keep getting a new quote until condition is met
   componentDidMount(){
-    getQuote()
-      .then( res => {
-        this.setState({quote: res.data})
-        console.log(res.data)
-        ;
-      })
+    const callback = function(){
+      getQuote()
+        .then( res => {
+          console.log(res.data);
+          let data = res.data.toString();
+          let q = data.split(' ');
+          //condition
+          if(q.length >= 10){
+            callback();
+            console.log(res.data);
+          }else{
+            this.setState({ quote: res.data });
+            console.log(res.data);
+          }
+        })
+    }
   }
 
   render() {
@@ -24,7 +38,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        Ron Swanson Quote Generator
         {quote}
         </header>
       </div>
