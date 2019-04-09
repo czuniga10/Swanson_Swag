@@ -11,11 +11,7 @@ class App extends Component {
       largeQuote:[]
     }
   }
-  
 
-
-
-  //trying to use a callback function to keep getting a new quote until condition is met
   smallQuote(){
     this.setState({smallQuote: []});
     const callback = () => {
@@ -74,11 +70,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <button onClick={(e) => this.smallQuote(e)}>small quote</button>
+        <button className="button" onClick={(e) => this.smallQuote(e)}>small quote</button>
         {this.state.smallQuote}
-        <button onClick={(e) => this.midQuote(e)}>mid quote</button>
+        <button className="button" onClick={(e) => this.midQuote(e)}>mid quote</button>
         {this.state.midQuote}
-        <button onClick={(e) => this.largeQuote(e)}>large quote</button>
+        <button className="button" onClick={(e) => this.largeQuote(e)}>large quote</button>
         {this.state.largeQuote}
         </header>
       </div>
