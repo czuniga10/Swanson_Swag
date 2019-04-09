@@ -6,39 +6,37 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quote: []
+      smallQuote: []
     }
   }
   
 
 
-  
+
   //trying to use a callback function to keep getting a new quote until condition is met
-  componentDidMount(){
-    const callback = function(){
+  smallQuote(){
+    const callback = () => {
       getQuote()
         .then( res => {
-          console.log(res.data);
-          let data = res.data.toString();
-          let q = data.split(' ');
+          let dat = res.data[0].toString();
+          let q = dat.split(' ');
           //condition
-          if(q.length >= 10){
+          if(q.length >= 4){
             callback();
-            console.log(res.data);
           }else{
-            this.setState({ quote: res.data });
-            console.log(res.data);
+            this.setState({ smallQuote: res.data[0] }); 
           }
         })
     }
+    callback();
   }
 
   render() {
-    const quote = this.state.quote;
     return (
       <div className="App">
         <header className="App-header">
-        {quote}
+        <button onClick={(e) => this.smallQuote(e)}>small quote</button>
+        {this.state.smallQuote}
         </header>
       </div>
     );
