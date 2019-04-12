@@ -14,6 +14,8 @@ class App extends Component {
 
   smallQuote(){
     this.setState({smallQuote: []});
+    this.setState({midQuote: []});
+    this.setState({largeQuote: []});
     const callback = () => {
       getQuote()
         .then( res => {
@@ -31,7 +33,9 @@ class App extends Component {
   }
 
   midQuote(){
+    this.setState({smallQuote: []});
     this.setState({midQuote: []});
+    this.setState({largeQuote: []});
     const callback = () => {
       getQuote()
         .then( res => {
@@ -49,6 +53,8 @@ class App extends Component {
   }
 
   largeQuote(){
+    this.setState({smallQuote: []});
+    this.setState({midQuote: []});
     this.setState({largeQuote: []});
     const callback = () => {
       getQuote()
@@ -70,13 +76,22 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <button className="button" onClick={(e) => this.smallQuote(e)}>small quote</button>
-        {this.state.smallQuote}
-        <button className="button" onClick={(e) => this.midQuote(e)}>mid quote</button>
-        {this.state.midQuote}
-        <button className="button" onClick={(e) => this.largeQuote(e)}>large quote</button>
-        {this.state.largeQuote}
+        <span>Swanson Quote Generator</span>
         </header>
+        <div className="Quote-container">
+          {this.state.smallQuote}
+          {this.state.midQuote}
+          {this.state.largeQuote}   
+        </div>  
+        <div className="Button-Container">
+          <button className="button" onClick={(e) => this.smallQuote(e)}>small quote</button>
+          <button className="button" onClick={(e) => this.midQuote(e)}>mid quote</button>
+          <button className="button" onClick={(e) => this.largeQuote(e)}>large quote</button>
+        </div>
+        <div className="Swanson-img">
+          <img src="https://i.etsystatic.com/18117372/r/il/687b20/1626362036/il_fullxfull.1626362036_q5dj.jpg" alt="Swanson Silhouette" />
+        </div>
+        
       </div>
     );
   }

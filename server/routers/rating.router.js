@@ -5,15 +5,26 @@ const ratingRouter = express.Router();
 
 //gets rating 
 ratingRouter.get('/:quoteId', (req,res) => {
-    const quote_id = req.params.ratingId;
+    const quote_id = req.params.quoteId;
     const db = getDb();
     db.get_rating( [quote_id] )
         .then( rating => res.status(200).send(rating))
         .catch( err => res.status(500).send(err))
 });
 
-//updates rating
-exerciseRouter.put('update/:quoteId', (req, res) => {
+//gets current rating based on quote text
+//NOT WORKING YET
+ratingRouter.get('/rating', (req,res) => {
+    const {quote} = req.body;
+    const db = getDb();
+    db.get_rating_by_quote( [quote] )
+        .then( rating => res.status(200).send(rating))
+        .catch( err => res.status(500).send(err))
+});
+
+//updates new rating to DB
+//NOT WORKING YET
+ratingRouter.put('/update/:quoteId', (req, res) => {
     const quote_id = req.params.quoteId;
     const db = getDb();
     const { rating } = req.body;

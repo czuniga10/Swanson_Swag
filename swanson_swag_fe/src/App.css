@@ -9,13 +9,13 @@
 }
 
 .App-header {
-  background-color: whitesmoke;
-  min-height: 100vh;
+  background-color: white;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(15px + 2vmin);
   font: black;
 }
 
@@ -23,15 +23,44 @@
   color: #61dafb;
 }
 
-.button {
-  background-color: #4CAF50; 
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px 0 25px 0;
+.Quote-container {
+  min-height: 35px;
+  min-width: 555px;
+  width: 90%;
+  margin: auto;
+  background-color: rgb(218, 214, 214);
+  font-size: 15px;
+  vertical-align: center;
+  padding-top: 8px;
 }
 
+.button {
+  padding: 10px 25px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 5px #999;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.Swanson-img {
+  height: 500px;
+  margin: auto;
+  padding-left: 15px;
+  padding-top: 4px;
+}
